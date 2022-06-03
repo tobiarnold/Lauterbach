@@ -1,5 +1,3 @@
-import sys
-from streamlit import cli as stcli
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -32,7 +30,6 @@ def main():
            - Zur Filterung können einzelne oder mehrere Wörter verwendet werden. 
            - Mit dem x rechts neben dem Wort im Filter können Wörter wieder entfernt werden.
            """)
-        st.write("Tabelle lässt sich mit Klick auf eine der Spaltenüberschriften sortieren")
         df = pd.read_csv(r"https://raw.githubusercontent.com/tobiarnold/Lauterbach/main/df_karl_new.csv", delimiter=";")
         options = st.multiselect("Nach welchen Wörtern soll die Tabelle gefiltert werden?",
                                          ["afd", "affenpocken", "corona", "covid", "deutschland","impfung", "kinder", "lockdown", "merkel", "studie", "trump", "welle"])
@@ -95,10 +92,5 @@ def main():
         plt.ylabel("Anzahl Tweets")
         st.pyplot(fig)
         st.markdown("""---""")
-if __name__ == '__main__':
-    if st._is_running_with_streamlit:
-        main()
-    else:
-        sys.argv = ["streamlit", "run", sys.argv[0]]
-        sys.exit(stcli.main())
-
+if __name__ == "__main__":
+  main()
