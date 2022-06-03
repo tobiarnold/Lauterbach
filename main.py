@@ -32,7 +32,7 @@ def main():
            - Mit dem x rechts neben dem Wort im Filter können Wörter wieder entfernt werden.
            """)
         st.write("Tabelle lässt sich mit Klick auf eine der Spaltenüberschriften sortieren")
-        df = pd.read_csv(r"df_karl_new.csv", delimiter=";")
+        df = pd.read_csv(r"https://raw.githubusercontent.com/tobiarnold/Lauterbach/main/df_karl_new.csv", delimiter=";")
         options = st.multiselect("Nach welchen Wörtern soll die Tabelle gefiltert werden?",
                                          ["afd", "affenpocken", "corona", "covid", "deutschland","impfung", "kinder", "lockdown", "merkel", "studie", "trump", "welle"])
         df_option = df
@@ -48,7 +48,7 @@ def main():
         - Falls die Wordcloud nicht dargestellt werden kann den Slider noch einmal betätigen.
         """)
         sns.set_style("whitegrid")
-        df_wordcloud = pd.read_csv(r"df_karl_bereinigt.csv", delimiter=";",encoding="utf8")
+        df_wordcloud = pd.read_csv(r"https://raw.githubusercontent.com/tobiarnold/Lauterbach/main/df_karl_bereinigt.csv", delimiter=";",encoding="utf8")
         df_wordcloud = df_wordcloud[["Text"]]
         df_wordcloud["Text"] = df_wordcloud["Text"].astype(str)
         df_wordcloud = df_wordcloud[df_wordcloud["Text"].str.contains('|'.join(options))]
